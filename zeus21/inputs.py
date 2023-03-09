@@ -201,7 +201,7 @@ class Astro_Parameters:
         else:
             norm = (1.0 + self.alpha_xray)/((self.Emax_xray_norm/self.E0_xray)**(1 + self.alpha_xray) - 1.0) / self.E0_xray
 
-        return np.power(En/self.E0_xray,self.alpha_xray)/En * norm * np.heaviside(En - self.E0_xray, 0.5)
+        return np.power(En/self.E0_xray,self.alpha_xray)/En * norm * np.tanh(En - self.E0_xray, 0.5) #changed from heavside
         #do not cut at higher energies since they redshift into <2 keV band
 
 
